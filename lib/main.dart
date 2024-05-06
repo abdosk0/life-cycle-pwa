@@ -24,25 +24,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
-  String _lifecycleState = 'UNKNOWN';
+  String _lifecycleState = 'Unknown';
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _updateLifecycleState('initialized');
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _updateLifecycleState('disposed');
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
+    _updateLifecycleState(state.toString());
+  }
+
+  void _updateLifecycleState(String newState) {
     setState(() {
-      _lifecycleState = state.toString();
+      _lifecycleState = newState;
     });
   }
 
@@ -50,20 +56,20 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PWA Lifecycle Demo'),
+        title: const Text('PWA Lifecycle Demo'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'App Lifecycle State:',
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               _lifecycleState,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ],
         ),

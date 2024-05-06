@@ -1,7 +1,7 @@
 {
     "name": "pwa_life_cycle",
     "short_name": "pwa_life_cycle",
-    "start_url": ".",
+    "start_url": "build/web",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
@@ -30,6 +30,15 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
+        }
+    ],
+    "screenshots": [
+        {
+         "src": "icons/Icon-512.png",
+          "sizes": "640x320",
+          "type": "image/gif",
+          "form_factor": "wide",
+          "label": "Wonder Widgets"
         }
     ]
 }
